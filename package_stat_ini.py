@@ -2,9 +2,12 @@ import sys
 import os
 from PyQt5 import QtWidgets, QtCore, QtGui
 
-from UI import package_stat_ui_IOS
+if os.name == 'posix':
+    from UI import package_stat_ui_IOS as UI
+elif os.name == 'nt':
+    from UI import package_stat_ui_WIN as UI
 
-class PackageStat(package_stat_ui_IOS.Ui_MainWindow, QtWidgets.QMainWindow):
+class PackageStat(UI.Ui_MainWindow, QtWidgets.QMainWindow):
     def __init__(self):
         super(PackageStat, self).__init__()
         self.setupUi(self)
