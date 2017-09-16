@@ -40,10 +40,11 @@ class Filter:
         self.filtered_by_type = []
 
     def filtering(self, assetName, assetPath, assetSize):
-        if assetName.startswith(Ue4NameConvantion().getPrefix(self.asset_type)):
-            self.filtered_by_type.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
-            if assetSize > self.size_range:
-                self.filtered_by_size.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
+        if '\\Packages\\Lighting\\' in assetPath or '\\Packages\\Fx\\' in assetPath:
+            if assetName.startswith(Ue4NameConvantion().getPrefix(self.asset_type)):
+                self.filtered_by_type.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
+                if assetSize > self.size_range:
+                    self.filtered_by_size.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
     def getFilteredAssetsSize(self):
         return sum([item[key] for item in self.filtered_by_type for key in item if key == 'size'])
     def getFilteredAssetsBySizeCount(self):
@@ -51,7 +52,7 @@ class Filter:
 
 class sizes:
     def __init__(self):
-        self.path = r"/Users/aleksandr/UE4_projects/PyPlugin/IPA/unpackPAK/LiS/Content/Packages"
+        self.path = r"D:\SVN\13.09.2017-15.24.24-LiS_TransferEP1_5-svn-martynyuk-r-8171\ChunkInstall\IOS\Episode"
 
         self.directory_size = 0
         self.file_size = 0
