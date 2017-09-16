@@ -1,9 +1,10 @@
 import sys
 import os
 from PyQt5 import QtWidgets, QtCore, QtGui
-from UI import package_stat_ui
 
-class PackageStat(package_stat_ui.Ui_MainWindow, QtWidgets.QMainWindow):
+from UI import package_stat_ui_IOS
+
+class PackageStat(package_stat_ui_IOS.Ui_MainWindow, QtWidgets.QMainWindow):
     def __init__(self):
         super(PackageStat, self).__init__()
         self.setupUi(self)
