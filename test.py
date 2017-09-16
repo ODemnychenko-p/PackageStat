@@ -90,7 +90,7 @@ class sizes:
 
 a = sizes()
 a.path_to_dict(a.path)
-print("Total {0}s size: {1}\nCount filtered {0}s by size: {2}\nFiltered {0}s by size: {3}".format(a.filter.asset_type,
+print("Totals {0}s size: {1}\nCount filtered {0}s by size: {2}\nFiltered {0}s by size: {3}".format(a.filter.asset_type,
                                                                                                   a.filter.getFilteredAssetsSize(),
                                                                                                   a.filter.getFilteredAssetsBySizeCount(),
                                                                                                   json.dumps(a.filter.filtered_by_size, indent=2)
