@@ -33,18 +33,18 @@ class Ue4NameConvantion:
     def getPrefix(self, prefixName):
         return self.prefixes_by_type.get(prefixName, False)
 class Filter:
-    def __init__(self, asset_type = 'All Assets', size_range = 1):
+    def __init__(self, asset_type = 'All Assets', size_range = 0):
         self.asset_type = asset_type
         self.size_range = size_range
         self.filtered_by_size = []
         self.filtered_by_type = []
 
     def filtering(self, assetName, assetPath, assetSize):
-        if '\\Packages\\Lighting\\' in assetPath or '\\Packages\\Fx\\' in assetPath:
-            if assetName.startswith(Ue4NameConvantion().getPrefix(self.asset_type)):
-                self.filtered_by_type.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
-                if assetSize > self.size_range:
-                    self.filtered_by_size.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
+        if '\\Characters\\' in assetPath:
+        # if assetName.startswith(Ue4NameConvantion().getPrefix(self.asset_type)):
+            self.filtered_by_type.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
+            if assetSize > self.size_range:
+                self.filtered_by_size.append({'name' : assetName, 'path' : assetPath, 'size' : assetSize})
     def getFilteredAssetsSize(self):
         return sum([item[key] for item in self.filtered_by_type for key in item if key == 'size'])
     def getFilteredAssetsBySizeCount(self):
@@ -52,7 +52,7 @@ class Filter:
 
 class sizes:
     def __init__(self):
-        self.path = r"D:\SVN\13.09.2017-15.24.24-LiS_TransferEP1_5-svn-martynyuk-r-8171\ChunkInstall\IOS\Episode"
+        self.path = r"D:\SVN\NBAPlaygrounds2\Builds\IOS\17.12.2018\IOS\pak\nbaplaygrounds2-ios\NBAPlaygrounds2\Content"
 
         self.directory_size = 0
         self.file_size = 0
